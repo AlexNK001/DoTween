@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 
-public class Mover : MonoBehaviour
+public class Mover : AnimatedFigure
 {
     [SerializeField] private Vector3 _endValue;
     [SerializeField] private float _duration;
@@ -9,7 +9,9 @@ public class Mover : MonoBehaviour
     private void Start()
     {
         _endValue += transform.position;
-        transform.DOMove(_endValue, _duration);
+        transform.DOMove(_endValue, _duration)
+            .SetEase(Ease)
+            .SetLoops(Repiats,LoopType);
     }
 }
 

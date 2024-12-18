@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 
-public class ColorChanger : MonoBehaviour
+public class ColorChanger : AnimatedFigure
 {
     [SerializeField] private MeshRenderer _meshRenderer;
     [SerializeField] private Color _endValue;
@@ -9,7 +9,9 @@ public class ColorChanger : MonoBehaviour
 
     private void Start()
     {
-        _meshRenderer.material.DOColor(_endValue, _duration);
+        _meshRenderer.material.DOColor(_endValue, _duration)
+            .SetEase(Ease)
+            .SetLoops(Repiats, LoopType);
     }
 }
 
